@@ -16,7 +16,7 @@ app.get('/video', (req, res) => {
     const contentLength = end - start + 1;
 
     const headers = {
-        "Conten-Range": `bytes ${start}-${end}/${videoSize}`,
+        "Content-Range": `bytes ${start}-${end}/${videoSize}`,
         "Accept-Ranges": "bytes",
         "Content-Length": contentLength,
         "Content-Type": "video/mp4"
