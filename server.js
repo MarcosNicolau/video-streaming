@@ -10,9 +10,19 @@ app.get('/video', (req, res) => {
     const videoSize = fs.statSync(videoPath).size;
 
     const chunkSize = 1 * 1e+6;
-    const start = Number(range.replace(/\D/g, ''));
+
     const end = Math.min(start + chunkSize, videoSize -1);
 
+    
+    if(range === undefined) {
+        start=0;
+    } 
+    else{
+        start = Number(range.replace(/\D/g, ""));
+        console.log("start : "+start);
+    } 
+    
+    
     const contentLength = end - start + 1;
 
     const headers = {
